@@ -211,8 +211,7 @@ def Unet(
 
     submodules_keys = get_submodules().keys()
     submodules_kwargs = {k: kwargs[k] for k in set(kwargs.keys()) & set(submodules_keys)}
-    other_kwargs = {k: kwargs[k] for k in set(kwargs.keys()) - set(submodules_keys)}
-    
+
     backend, layers, models, keras_utils = get_submodules_from_kwargs(submodules_kwargs)
 
     if decoder_block_type == 'upsampling':
@@ -228,7 +227,7 @@ def Unet(
         input_shape=input_shape,
         weights=encoder_weights,
         include_top=False,
-        **other_kwargs,
+        **kwargs,
     )
 
     if encoder_features == 'default':
