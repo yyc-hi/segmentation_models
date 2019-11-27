@@ -246,7 +246,7 @@ def Unet(
 
     # lock encoder weights for fine-tuning
     if encoder_freeze:
-        freeze_model(backbone, **kwargs)
+        freeze_model(backbone, **submodules_kwargs)
 
     # loading model weights
     if weights is not None:
